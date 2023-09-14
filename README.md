@@ -1,250 +1,180 @@
-- 👋 Hi, I’m DHRUV.RATHOD
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+PYTHON PROGRAMMING 
 
-<!---
-DHRUV10-R/DHRUV10-R is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+1.
 
------------------------1-----------------------
+# program to illustrate the use of exception handling
+numerator=(int)(input("ENTER INTEGER NUMBER "))
+denominator=(int)(input("ENTER INTEGER NUMBER "))
+try:
+    result=numerator/denominator
+    print(numerator,"/",denominator,"is",result)
+except:
+    print("ERROR:  DENOMINATOR CANNOT BE 0.")
 
+2.
 
-package handlingexce;
-import javax.swing.*;
-import javax.swing.event.*;
-import java.awt.*;
+#program to illustrate the use of raise exception
+try:
+    x=int(input('ENTER NUMBER UPTO 100:'))
+    if x>100:
+          raise ValueError(x)
+except ValueError:
+    print(x,"is out of allowed range")
+else:
+    print(x,"is within the allowed range")
 
-class List1 extends JFrame implements ListSelectionListener{
+3.
 
-    JList lst1;
-    JPanel p1;
-    Color clr[]={Color.RED,Color.GREEN,Color.BLUE};
-    List1()
-    {
-        setTitle("ListBox Demo");
-        setSize(400,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        setVisible(true);
-        String str[]={"RED","GREEN","BLUE"};
-        
-        lst1=new JList (str);
-        p1=new JPanel();
-        lst1.setBounds(100,200,50,40);
-        p1.add(lst1);
-        add(p1,BorderLayout.CENTER);
-        p1.setBackground(Color.RED);
-        lst1.addListSelectionListener(this);
-    }
-    public void valueChanged(ListSelectionEvent e)
-    {
-        p1.setBackground(clr[lst1.getSelectedIndex()]);
-        
-    }
-    public static void main(String args[]) {
-        new List1();
-    }
-}
+#Catching specific exceptions
+try:
+    a=int(input("ENTER VALUE OF a:"))
+    b=int(input("ENTER VALUE OF b:"))
+    c=a/b
+    print("THE ANSWER OF DIVIDE BY b: ",c)
+except ValueError:
+    print("ENTERED VALUE IS WRONG")
+except ZeroDivisionError:
+    print("CAN'T DIVIDE BY ZERO")
 
--------------------------2---------------------
+4.
 
+#Program to illustrate the use of exception
+def simple_interest(amount,year,rate):
+    try:
+        if rate>100:
+            raise ValueError(rate)
+        interest=(amount*year*rate)/100
+        print('THE SIMPLE INTEREST IS',interest)
+        return interest
+    except ValueError:
+        print('INTEREST RATE IS OUT OF RANGE',rate)
 
-package handlingexce;
+print('Case 1')
+simple_interest(800,6,8)
+print('Case 2')
+simple_interest(800,6,800)
 
-import java.sql.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+5.
 
-public class Jdbcswingp2 extends JFrame implements ActionListener 
-    
+import mysql.connector
 
- 
-{
-    JLabel lblRollno,lblName,lblAddr;
-    JTextField txtRollno,txtName,txtAddr;
-    JButton btnInsert,btnDisplay;
-    JTextArea txt1;
-    JPanel p1,p2;
+con=mysql.connector.connect (host='localhost', database='student35_fycs', user='root', password='123456')
 
-    Connection con;
-    Statement s;
-    PreparedStatement pst;
-    ResultSet rs;
-    Jdbcswingp2()
-    {
-	setTitle("JDBC using Swing");
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setSize(300,300);
-	setVisible(true);
+if con.is_connected():
+    print("Connection establised")
+else:
+     print("Connection failed")
 
-	lblRollno=new JLabel("Enter RollNo");
-        txtRollno=new JTextField(20);
-        lblName=new JLabel("Enter Name");
-        txtName=new JTextField(20);
-        lblAddr=new JLabel("Enter Address");
-        txtAddr=new JTextField(20);
-		
-	btnInsert=new JButton("  Insert  ");
-        btnDisplay=new JButton("  Display  ");
-	
-        txt1=new JTextArea(80,20);
+cur=con.cursor()
 
-        p1=new JPanel();
-        p1.setLayout(new GridLayout(4,2));
-	p2=new JPanel();
-        
-        p1.add(lblRollno);
-	p1.add(txtRollno);
-        p1.add(lblName);
-	p1.add(txtName);
-        p1.add(lblAddr);
-	p1.add(txtAddr);
-        p1.add(btnInsert);
-        p1.add(btnDisplay);
-        
-	p2.add(txt1);
+cur.execute("select * from studinfo")
 
-	add(p1,BorderLayout.NORTH);
-        add(p2,BorderLayout.CENTER);
-        
-        btnInsert.addActionListener(this);
-	btnDisplay.addActionListener(this);
-    }
-    public void actionPerformed(ActionEvent ae)
-    {
-	try
-	{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-	}
-	catch(ClassNotFoundException ce)
-	{
-            System.out.println(ce);
-	}
-        if(ae.getSource()==btnInsert)
-        {
-            String str1,str2,str3;
-            int r;
-            str1=txtRollno.getText();
-            str2=txtName.getText();
-            str3=txtAddr.getText();
-            r=Integer.parseInt(str1);
-            try 
-            {
-                String url="jdbc:mysql://localhost:3305/sycs34";
-                con=DriverManager.getConnection(url,"root","123456");
-                s=con.createStatement();
-                
-                String q="insert into Student values(?,?,?)";
-                
-                pst=con.prepareStatement(q);
-                pst.setInt(1, r);
-                pst.setString(2, str2);
-                pst.setString(3, str3);
-                
-                pst.executeUpdate();
-                
-                JOptionPane.showMessageDialog(this,"Record inserted properly");
-                txtRollno.setText("");
-                txtName.setText("");
-                txtAddr.setText("");
-            } 
-            catch(SQLException e)
-            {
-                
-            }
-        }
-	if(ae.getSource()==btnDisplay)
-	{
-            try
-            {
-		String url="jdbc:mysql://localhost:3305/sycs34";
-	 	con=DriverManager.getConnection(url,"root","123456");
-		s=con.createStatement();
-		
-                txt1.setText("");
-		rs=s.executeQuery("select * from student");
-		txt1.append("ROLL_NO\tNAME\tADDRESS\n");
-                while(rs.next())
-                {
-                    txt1.append(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\n");
-                }
-                    rs.close();
-            } 
-            catch(SQLException ce)
-            {
-            	System.out.println(ce);
-            }
-	}
-    }
-    public static void main(final String [] args)
-    {
-	new Jdbcswingp2();
-    }
-}
+data=cur.fetchone ()
+print(data)
 
--------------------------3---------------------
+print("Total Rows retrieved:", cur.rowcount)
 
+data=cur.fetchmany (4) 
+for row in data:
+    print(row)
 
-package handlingexce;
-import javax.swing.JOptionPane;
+print("Total Rows retrieved:", cur.rowcount)
 
+con.close()
 
-public class Loginform  extends javax.swing.JFrame
-{
-    public Loginform(){
-        init Components();
-    }
-    private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt){
-        chan[] txt=txtpwd.getPassword();
-        String str1=txtname.getText();
-        String str2= new String(txt);
-             if(str1.equals("sycs")&&str2.equals("abc12"))
-             {
-                JOptionPane.showMessageDialog(null, "Login Successful","Welcome",1);
-             }
-             else{
-                  JOptionPane.showMessageDialog(null, "Login UnSuccessful","Sorry",2);
-                  txtname.setText(" ")
-                  txtpwd.setText(" ")
-             }
-    }
-    private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt){
-        System.exit(0);
-    }
-}
+6.
 
+from datetime import datetime
+timestamp=15468754216
+date_time=datetime.fromtimestamp(timestamp)
+print("Date time object: ",date_time)
+d=date_time.strftime("%H:%M:%S")
+print("Output2: ",d)
+d=date_time.strftime("%d%b%Y")
+print("Output3: ",d)
+d=date_time.strftime("%d%B%Y")
+print("Output4: ",d)
+d=date_time.strftime("%I%p")
+print("Output5: ",d)
 
--------------------------4---------------------
+#strftime
+from datetime import datetime
+now=datetime.now()
+year=now.strftime("%Y")
+print("Year: ",year)
+month=now.strftime("%m")
+print("Month: ",month)
+day=now.strftime("%d")
+print("Day: ",day)
+time=now.strftime("%H:%M:%S")
+print("Time: ",time)
+date_time=now.strftime("%m/%d/%Y,%H:%M:%S")
+print("date_time: ",date_time)
 
+7.
 
-import java.util.Scanner;
+#program to synchronization by using lock
+from threading import*
+import time
+l=Lock()
+def wish(name,age):
+    for i in range(3):
+        l.acquire()
+        print("Hi",name)
+        time.sleep(2)
+        print("Your age is",age)
+        l.release()
+t1=Thread(target=wish, args=("Dhruv","18"))
+t2=Thread(target=wish, args=("Sahil","18"))
+t1.start()
+t2.start()          
 
-public class Exception3 {
-    public static void main(String[] args)
-    {
-        try
-        {
-            int a[]=new int[5];
-            a[10]=30/3;
-                       
-        }
-        catch(ArithmeticException e)
-        {
-            System.out.println("Arithmetic Exception occurs");
-        }
-        catch(ArrayIndexOutOfBoundsException e)
-        {
-            System.out.println("ArrayIndexOutOfBounds Exception occurs");
-        }
-        catch(Exception e)
-        {
-            System.out.println("Parent Exception occurs");
-        }
-        System.out.println("REST OF THE CODE.......!");
-    }
-    
-}
+8.
+
+#Creating thread using thread module
+import _thread    #import thread module
+import time      #import time module
+def cal_square(num):  #define
+    print(" Calculate the square root of the given number")
+    for n in num:
+       time.sleep(0.3)      #iteration it waits for 0.3 times
+       print('Square is : ',n *n)
+def cal_cube(num):
+    print(" Calculate the cube of the given number")
+    for n in num:
+       time.sleep(0.3)      #iteration it waits for 0.3 times
+       print('Square is : ',n *n*n)
+arr=[4,5,6,7,2]
+t1=time.time()
+cal_square(arr)
+cal_cube(arr)
+print("Total time taken by threads is: ",time.time()-t1)
+
+9.
+
+#program to run writing string
+myfile=open("D:\\adv python\\name2.txt","a")
+ans='y'
+while ans=='y':
+    bno=int(input("enter book number "))
+    bname=input("enter book name  ")
+    author=input("enter author name ")
+    price=int(input("enter book price "))
+    brec=str(bno)+","+bname+","+author+","+str(price)+"\n"
+    myfile.write(brec)
+    ans=input("add more ?")
+myfile.close()
+
+10.
+
+#program to display using append mode
+myfile=open("D:\\adv python\\write1.txt","a")
+for i in range(3):
+    name= input("Enter name to store :")
+    myfile.write(name)
+    myfile.write('\n')
+myfile.close()
+print("\nData saved successfully...")
+
+11.
+
