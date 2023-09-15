@@ -186,3 +186,13 @@ print("\nData saved successfully...")
 
 11.
 
+#program to display using mylist
+myfile=open("D:\\adv python\\para1.txt","w")
+mylist=[]
+for i in range(5):
+    name=input("enter name: ")
+    mylist.append(name+'\n')
+myfile.writelines(mylist)
+myfile.close()
+print("data saved...")
+
