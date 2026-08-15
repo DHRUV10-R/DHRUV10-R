@@ -14,6 +14,8 @@
   <a href="mailto:dhruv.prakash.rathod@gmail.com">Email</a>
   &nbsp;&middot;&nbsp;
   <a href="https://github.com/DHRUV10-R">GitHub</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://mrdhruvstar.vercel.app">Portfolio</a>
 </p>
 
 <p align="center">
@@ -250,7 +252,7 @@ Successfully completed an **Industry Orientation** project involving surveys, da
 <p align="center">
   <strong><a href="">Dhruv Rathod</a></strong>
   &nbsp;&middot;&nbsp;
-  <a href="">Portfolio</a>
+  <a href="https://mrdhruvstar.vercel.app/">Portfolio</a>
   &nbsp;&middot;&nbsp;
   <a href="">LinkedIn</a>
   &nbsp;&middot;&nbsp;
