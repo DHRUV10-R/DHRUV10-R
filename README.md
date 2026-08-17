@@ -1,4 +1,4 @@
-# Hi, I'm Dhruv 👋
+# Hi, I'm Dhruv 
 
 ### Frontend Developer • Full-Stack Developer • M.Sc. Computer Science Student
 
