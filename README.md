@@ -1,6 +1,6 @@
 # Hi, I'm Dhruv 
 
-### Frontend Developer • Full-Stack Developer • M.Sc. Computer Science Student
+### Software Developer • Full-Stack Developer • M.Sc. Computer Science Student
 
 Turning ideas into simple, beautiful, and functional web experiences.
 
